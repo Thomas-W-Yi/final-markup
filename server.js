@@ -3,20 +3,20 @@ const path = require('path');
 const http = require('http');
 const app = express();
 
-const whitelist = ['https://stark-caverns-39957.herokuapp.com'​]
-const corsOptions = {
-  origin: function (origin, callback) {
-    console.log("** Origin of request " + origin)
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
-      console.log("Origin acceptable")
-      callback(null, true)
-    } else {
-      console.log("Origin rejected")
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
-app.use(cors(corsOptions))
+// const allowedOrigins = ['http://localhost:3002','https://stark-caverns-39957.herokuapp.com'​]
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     console.log("** Origin of request " + origin)
+//     if (whitelist.indexOf(origin) !== -1 || !origin) {
+//       console.log("Origin acceptable")
+//       callback(null, true)
+//     } else {
+//       console.log("Origin rejected")
+//       callback(new Error('Not allowed by CORS'))
+//     }
+//   }
+// }
+// app.use(cors(corsOptions))
 
 const server = http.createServer(app);
 const cors = require('cors');
@@ -26,7 +26,6 @@ const io = require('socket.io')(server, {
     methods: ['GET', 'POST'],
   },
 });
-
 
 io.on('connection', (socket) => {
   console.log('new client connected');
