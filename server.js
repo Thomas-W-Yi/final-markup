@@ -38,4 +38,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'front-end/build', 'index.html'));
   });
 }
-server.listen(8000, () => console.log('server is running on port 8000'));
+server.listen(process.env.PORT || 8000, () =>
+  console.log('server is running on port 8000')
+);
