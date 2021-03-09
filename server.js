@@ -3,7 +3,7 @@ const path = require('path');
 const http = require('http');
 const app = express();
 
-const whitelist = ['http://localhost:3000'​, 'http://localhost:8000'​, 'https://stark-caverns-39957.herokuapp.com/'​]
+const whitelist = ['https://stark-caverns-39957.herokuapp.com'​]
 const corsOptions = {
   origin: function (origin, callback) {
     console.log("** Origin of request " + origin)
